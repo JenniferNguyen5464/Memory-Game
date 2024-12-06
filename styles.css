@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Game Container Styling */
+#game-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    padding: 10px;
+    text-align: center;
+    background-size: cover; /* Ensures background image covers the container */
+    background-position: center; /* Centers the image */
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Game Board Styling */
+#game-board {
+    display: grid;
+    gap: 10px; /* Space between cards */
+    margin: 0 auto;
+    width: 400px; /* Fixed width for the grid */
+    height: 400px; /* Fixed height for the grid */
+    background-color: #fff;
+    border: 2px solid #000;
+}
+
+/* Dynamic Grid Layout */
+#game-board[data-grid-size="4"] {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+#game-board[data-grid-size="6"] {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+/* Card Styling */
+.card {
+    width: 100%; /* Adjusts dynamically based on grid cell size */
+    height: 100%;
+    background-color: #ccc;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Front and Back Content */
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-front {
+    background-color: #fff;
+    color: black;
+    display: none; /* Hidden until flipped */
+}
+
+.card-back {
+    background-color: #000;
+    color: white;
+}
+
+/* Flipped Cards */
+.card.flipped .card-front {
+    display: flex; /* Show front content */
+}
+
+.card.flipped .card-back {
+    display: none; /* Hide back content */
+}

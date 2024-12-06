@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Mode</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Timed Mode</h1>
+        <div id="options">
+            <label for="grid-size">Grid Size:</label>
+            <select id="grid-size">
+                <option value="4">4x4</option>
+                <option value="6">6x6</option>
+            </select>
+
+            <label for="content-type">Content Type:</label>
+            <select id="content-type">
+                <option value="numbers">Numbers</option>
+                <option value="shapes">Shapes</option>
+                <option value="fruits">Fruits</option>
+            </select>
+
+            <label for="time-limit">Time Limit:</label>
+            <select id="time-limit">
+                <option value="30">30 seconds</option>
+                <option value="60">60 seconds</option>
+                <option value="120">120 seconds</option>
+            </select>
+
+            <button id="start-game">Start Game</button>
+        </div>
+
+        <div id="game-status">
+            <p>Time Left: <span id="timer">0s</span></p>
+            <p>Score: <span id="score">0</span></p>
+        </div>
+
+        <div id="game-board"></div>
+        <button id="restart-game">Restart</button>
+        <button id="back-button">Back</button>
+    </div>
+
+    <script>
+        // Background images
+        const backgrounds = [
+            'images/bluebackground.jpg',
+            'images/purplebackground.jpg'
+        ];
+        let currentBackground = 0;
+
+        // Function to switch background
+        const switchBackground = () => {
+            currentBackground = (currentBackground + 1) % backgrounds.length;
+            document.getElementById('game-container').style.backgroundImage = `url('${backgrounds[currentBackground]}')`;
+        };
+
+        // Set initial background and start switching every 8 seconds
+        document.getElementById('game-container').style.backgroundImage = `url('${backgrounds[currentBackground]}')`;
+        setInterval(switchBackground, 8000);
+    </script>
+    <script src="timed.js" defer></script>
+</body>
+</html>
